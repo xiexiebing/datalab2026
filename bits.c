@@ -252,6 +252,9 @@ unsigned floatScale2(unsigned uf) {
         return (uf & 0x80000000) |
                ((uf & 0x7FFFFFFF) << 1);
 
+    if (exponent == 0x7F000000)
+        return (uf & 0x80000000) | 0x7F800000;
+
     return uf + 0x00800000;
 }
 
